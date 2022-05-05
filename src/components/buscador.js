@@ -7,15 +7,9 @@ function Buscador() {
 
    const busqueda = document.getElementById('buscador').value
     
-   const poke = getPokemeon(busqueda)
+    const a = getPokemeon(busqueda) 
 
-   
-
-
-
- 
-
-   
+    console.log("hola");
 
     event.preventDefault();
   };
@@ -28,7 +22,7 @@ function Buscador() {
       </form>
     </div>
 
-    <Pokemon />
+  
   );
 }
 
