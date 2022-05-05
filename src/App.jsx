@@ -7,17 +7,22 @@ function App() {
 
   useEffect(() => {
     console.log("aplicando efecto");
-    getPokemon('squirtle').then(pokemon => setPokemon(pokemon))
-
+    getPokemon("charmander").then((pokemon) => setPokemon(pokemon));
   }, []);
 
   return (
     <div className="App">
       <h2>Buscador</h2>
 
-      {pokemon.map((foto) => (
+      <h2>{pokemon.name}</h2>
+      {pokemon.images.map((foto) => (
         <img src={foto} alt="pokemon" />
       ))}
+
+      <ul>
+        <li>Id Pokemon: {pokemon.id}</li>
+        <li>Peso {pokemon.weight} Kg</li>
+      </ul>
     </div>
   );
 }
