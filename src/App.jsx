@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Pokemon from "./components/pokemon";
 import getPokemon from "./services/getPokemon";
 
 function App() {
@@ -13,16 +14,9 @@ function App() {
   return (
     <div className="App">
       <h2>Buscador</h2>
-
-      <h2>{pokemon.name}</h2>
-      {pokemon.images.map((foto) => (
-        <img src={foto} alt="pokemon" />
-      ))}
-
-      <ul>
-        <li>Id Pokemon: {pokemon.id}</li>
-        <li>Peso {pokemon.weight} Kg</li>
-      </ul>
+      
+      <Pokemon pokemon={pokemon} />
+     
     </div>
   );
 }

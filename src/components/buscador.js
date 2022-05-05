@@ -9,8 +9,7 @@ function Buscador() {
     
     const a = getPokemeon(busqueda) 
 
-    console.log("hola");
-
+   
     event.preventDefault();
   };
 
