@@ -6,7 +6,6 @@ function Buscador({setPokemon}) {
  const [keyword, setKeyword] = useState('');
   const handleSubmit = event => {
     event.preventDefault();
-
     getPokemon(keyword)
     .then(pk => {
       setPokemon(pk)

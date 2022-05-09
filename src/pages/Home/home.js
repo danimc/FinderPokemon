@@ -17,7 +17,10 @@ export default function Home() {
     <>
       <Buscador setPokemon={setPokemon} />
 
-      <Pokemon pokemon={pokemon}/>
+        {pokemon 
+        ? <Pokemon pokemon={pokemon}/>
+        : console.log('no hay')}
+      
     </>
   );
 }
