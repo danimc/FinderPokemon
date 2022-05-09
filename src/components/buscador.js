@@ -1,29 +1,46 @@
-import React, {useState} from "react";
-import getPokemon from "../services/getPokemon" 
+import React, { useState } from "react";
+import Autocomplete from "react-autocomplete";
+import pokeNames from "../services/avaliablePokemons";
+import getPokemon from "../services/getPokemon";
 
-function Buscador({setPokemon}) {
-
- const [keyword, setKeyword] = useState('');
-  const handleSubmit = event => {
+function Buscador({ setPokemon }) {
+  const [keyword, setKeyword] = useState("");
+  const handleSubmit = (event) => {
     event.preventDefault();
-    getPokemon(keyword)
-    .then(pk => {
-      setPokemon(pk)
-    })
-      
-   
+    getPokemon(keyword.toLowerCase()).then((pk) => {
+      setPokemon(pk);
+    });
   };
 
-  const handelChange = evt => {
-     setKeyword(evt.target.value)
-  }
-  
+  const handelChange = (evt) => {
+    const val = evt.target.value;
+
+    setKeyword(val);
+  };
+
+  const handelSelect = (val) => {
+    setKeyword(val);
+   
+    console.log(val);
+  };
 
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
         <label>Pokemon:</label>
-        <input onChange={handelChange} type="text" />
+
+        <Autocomplete
+          getItemValue={(val) => val}
+          items={pokeNames}
+          renderItem={(pokeNames, isHighlighted) => (
+            <div style={{ background: isHighlighted ? "lightgray" : "white" }}>
+              {pokeNames}
+            </div>
+          )}
+          value={keyword}
+          onChange={handelChange}
+          onSelect={handelSelect}
+        />
       </form>
     </div>
   );

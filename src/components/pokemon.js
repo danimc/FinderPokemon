@@ -8,7 +8,7 @@ export default function Pokemon({ pokemon }) {
       <h2>{name}</h2>
 
       {images.map((foto) => (
-        <img src={foto} alt="pokemon" />
+        <img key={foto} src={foto} alt="pokemon" />
       ))}
 
       <ul>
