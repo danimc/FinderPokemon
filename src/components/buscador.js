@@ -1,27 +1,32 @@
-import React from "react";
-import getPokemeon from "../services/getPokemon";
+import React, {useState} from "react";
+import getPokemon from "../services/getPokemon" 
 
-function Buscador() {
+function Buscador({setPokemon}) {
 
-  const handleSubmit = (event) => {
-
-   const busqueda = document.getElementById('buscador').value
-    
-    const a = getPokemeon(busqueda) 
-
-   
+ const [keyword, setKeyword] = useState('');
+  const handleSubmit = event => {
     event.preventDefault();
+
+    getPokemon(keyword)
+    .then(pk => {
+      setPokemon(pk)
+    })
+      
+   
   };
+
+  const handelChange = evt => {
+     setKeyword(evt.target.value)
+  }
+  
 
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
         <label>Pokemon:</label>
-        <input id="buscador" name="buscador" type="text" />
+        <input onChange={handelChange} type="text" />
       </form>
     </div>
-
-  
   );
 }
 

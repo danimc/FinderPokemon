@@ -6,6 +6,7 @@ export default function Pokemon({ pokemon }) {
   return (
     <>
       <h2>{name}</h2>
+
       {images.map((foto) => (
         <img src={foto} alt="pokemon" />
       ))}
