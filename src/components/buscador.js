@@ -5,24 +5,29 @@ import getPokemon from "../services/getPokemon";
 
 function Buscador({ setPokemon }) {
   const [keyword, setKeyword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
     getPokemon(keyword.toLowerCase()).then((pk) => {
       setPokemon(pk);
     });
+ 
   };
 
   const handelChange = (evt) => {
-    const val = evt.target.value;
-
-    setKeyword(val);
+    setKeyword(evt.target.value);
   };
 
-  const handelSelect = (val) => {
-    setKeyword(val);
-   
-    console.log(val);
+
+  const filtro = () => {
+    return pokeNames.filter((valor) => {
+      const keyFilter = keyword.toLowerCase();
+      const pokeFilter = valor.toLowerCase();
+      return pokeFilter.includes(keyFilter);
+    });
   };
+
 
   return (
     <div className="form">
@@ -31,7 +36,7 @@ function Buscador({ setPokemon }) {
 
         <Autocomplete
           getItemValue={(val) => val}
-          items={pokeNames}
+          items={filtro()}
           renderItem={(pokeNames, isHighlighted) => (
             <div style={{ background: isHighlighted ? "lightgray" : "white" }}>
               {pokeNames}
@@ -39,8 +44,9 @@ function Buscador({ setPokemon }) {
           )}
           value={keyword}
           onChange={handelChange}
-          onSelect={handelSelect}
+          onSelect={(value) => setKeyword(value)}
         />
+        <button>Buscar</button>
       </form>
     </div>
   );
