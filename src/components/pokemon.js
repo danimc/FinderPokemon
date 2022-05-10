@@ -1,8 +1,7 @@
 import React from "react";
 
-export default function Pokemon({ pokemon }) {
+ function Pokemon({ pokemon }) {
   const { id, name, images, weight } = pokemon;
-
   return (
     <>
       <h2>{name}</h2>
@@ -18,3 +17,5 @@ export default function Pokemon({ pokemon }) {
     </>
   );
 }
+
+export default React.memo(Pokemon)

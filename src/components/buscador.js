@@ -1,31 +1,21 @@
 import React, { useState } from "react";
 import Autocomplete from "react-autocomplete";
-import pokeNames from "../services/avaliablePokemons";
+import { findPokemon } from "../hooks/nameFilter";
 import getPokemon from "../services/getPokemon";
 
-function Buscador({ setPokemon }) {
+export default function Buscador({ setPokemon }) {
   const [keyword, setKeyword] = useState("");
+  const dataFilter = findPokemon({keyword})
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     getPokemon(keyword.toLowerCase()).then((pk) => {
       setPokemon(pk);
     });
- 
   };
 
   const handelChange = (evt) => {
     setKeyword(evt.target.value);
-  };
-
-
-  const filtro = () => {
-    return pokeNames.filter((valor) => {
-      const keyFilter = keyword.toLowerCase();
-      const pokeFilter = valor.toLowerCase();
-      return pokeFilter.includes(keyFilter);
-    });
   };
 
 
@@ -36,10 +26,10 @@ function Buscador({ setPokemon }) {
 
         <Autocomplete
           getItemValue={(val) => val}
-          items={filtro()}
-          renderItem={(pokeNames, isHighlighted) => (
-            <div style={{ background: isHighlighted ? "lightgray" : "white" }}>
-              {pokeNames}
+          items={dataFilter}
+          renderItem={(items, isHighlighted) => (
+            <div key={items} style={{ background: isHighlighted ? "lightgray" : "white" }}>
+              {items}
             </div>
           )}
           value={keyword}
@@ -52,4 +42,4 @@ function Buscador({ setPokemon }) {
   );
 }
 
-export default Buscador;
+
