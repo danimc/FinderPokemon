@@ -2,17 +2,23 @@
   text-align: center;
 }
 
+.complete {
+  margin-top: 50px;
+  margin-left: 15%;
+  max-width: 850px;
+ display: flex;
+}
 .pokedex {
   padding-top: 50px;
-  padding-bottom: 50px;
-  position: fixed;
+  padding-bottom: 50px; 
   align-items: center;
-  width: 70%;
+  width: 50%;
   background-color: #d1092b;
-  margin-left: 15%;
+  max-width: 400px;
+  min-width: 280px;
   border-radius: 10px;
-
-  max-width: 350px;
+  border-color: #000;
+  border-style: solid; 
 }
 
 .screen {
@@ -62,7 +68,24 @@
 
 .header-label {
   color: #fff;
-  position: absolute;
-  margin-right: 15px;
-  right: 0px;
+  margin-left: 100px;
+  position: fixed;
+  
+}
+
+/*BACK POKEDEX */
+
+.back {
+  background-color: #df0909;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  border-color: #000;
+  border-style: solid; 
+
+  max-width: 400px;
+  min-width: 300px;
+
 }

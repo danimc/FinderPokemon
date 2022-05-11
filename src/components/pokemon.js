@@ -2,6 +2,8 @@ import React from "react";
 
 function Pokemon({ pokemon }) {
   const { id, name, images, weight } = pokemon;
+
+
   return (
     <>
       <h2 className="pokeName">{name}</h2>
