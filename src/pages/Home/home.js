@@ -20,10 +20,13 @@ export default function Home() {
   return (
     <>
       <div className="pokedex">
+
+          <div className="camera-simulator"></div>
+          <h2 className="header-label">MY POKEDEX</h2>
       
 
         <div className="screen">
-          {pokemon ? <Pokemon pokemon={pokemon} /> : console.log("no hay")}
+          {pokemon ? <Pokemon pokemon={pokemon} /> : <p>Sin Información,<br/> prueba buscando algo :)</p>}
         </div>
 
         <Buscador setPokemon={setPokemon} />

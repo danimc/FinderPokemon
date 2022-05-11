@@ -4,8 +4,7 @@ import Home from "./pages/Home/home";
 
 function App() {
   return (
-    <div className="App">
-      <h2>MY POKEDEX</h2>
+    <div className="App">     
 
       <Home />
       
