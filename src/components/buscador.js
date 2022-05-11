@@ -5,7 +5,7 @@ import getPokemon from "../services/getPokemon";
 
 export default function Buscador({ setPokemon }) {
   const [keyword, setKeyword] = useState("");
-  const dataFilter = findPokemon({keyword})
+  const dataFilter = findPokemon({ keyword });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,17 +18,20 @@ export default function Buscador({ setPokemon }) {
     setKeyword(evt.target.value);
   };
 
-
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
-        <label>Pokemon:</label>
+        <label className="search-label">Buscar:</label>
 
         <Autocomplete
+        className="search-input"
           getItemValue={(val) => val}
           items={dataFilter}
           renderItem={(items, isHighlighted) => (
-            <div key={items} style={{ background: isHighlighted ? "lightgray" : "white" }}>
+            <div
+              key={items}
+              style={{ background: isHighlighted ? "lightgray" : "white" }}
+            >
               {items}
             </div>
           )}
@@ -41,5 +44,3 @@ export default function Buscador({ setPokemon }) {
     </div>
   );
 }
-
-
